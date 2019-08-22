@@ -1,10 +1,10 @@
 'use strict';
 
-var hljs = require('highlight.js');
-// import hljs from 'highlight.js';
-
 var vueHighlightJS = {};
-vueHighlightJS.install = function install(Vue) {
+vueHighlightJS.install = function install(Vue, options) {
+  var hljs = options && options.hljs;
+  if (!hljs) throw new Error('vue-highlightjs requires options.hljs in Vue.use()');
+
   Vue.directive('highlightjs', {
     deep: true,
     bind: function bind(el, binding) {
